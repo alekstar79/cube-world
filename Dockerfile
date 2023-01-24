@@ -1,6 +1,9 @@
-# Nginx Service ===================================================
+FROM ubuntu:20.04 as build-stage
 
-FROM node:16.15.0-alpine as build-stage
+RUN apt update && apt upgrade -y
+RUN apt install -y build-essential curl net-tools checkinstall libssl-dev autoconf make && apt clean
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+RUN apt install -y nodejs
 
 RUN mkdir -p /app
 WORKDIR /app
@@ -17,20 +20,3 @@ COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE $DOC_PORT
 
 CMD ["nginx", "-g", "daemon off;"]
-
-# Node  Service ==================================================
-
-# FROM node:16.15.0-alpine
-#
-# RUN mkdir -p /<dir>
-# WORKDIR /<dir>
-#
-# COPY package.json .
-# RUN npm install
-# COPY . .
-#
-# EXPOSE $PORT
-#
-# CMD ["npm", "run", "serve"]
-
-# ================================================================
