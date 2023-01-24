@@ -1,0 +1,9 @@
+node_modules
+.idea
+.git
+
+dist
+
+README.md
+
+Dockerfile

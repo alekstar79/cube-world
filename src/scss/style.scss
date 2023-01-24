@@ -1,0 +1,33 @@
+$font-size: 1rem;
+$font-color: lch(28 99 35);
+
+html {
+  font-family: 'Roboto', serif;
+  font-size: $font-size;
+  color: $font-color;
+
+  overflow: hidden;
+  touch-action: none;
+  content-zooming: none;
+
+  body {
+    overflow: hidden;
+
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    background: #000;
+
+    canvas {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      cursor: pointer;
+    }
+  }
+}
